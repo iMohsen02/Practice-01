@@ -1,0 +1,81 @@
+<!-- database-report.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Database Report</title>
+  <link rel="stylesheet" href="/styles/style.css">
+<style>
+  body {
+    background-color: #333;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    height: 100vh;
+}
+
+h1 {
+    text-align: center;
+}
+
+table {
+    width: 40%;
+    border-collapse: collapse;
+    margin: 20px;
+}
+th, td {
+    /* border: 1px solid #006b79b0; */
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #161212ab;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #002d5269;
+}
+
+tr {
+    transition: all 0.3s
+}
+tr:hover {
+    transform: translate(3px, 3px);
+    background-color: rgb(97, 134, 236);
+}
+</style>
+</head>
+<body>
+  <h1>Database Report</h1>
+  
+  <% if (userData && userData.length > 0) { %>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+      <% userData.forEach(user => { %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+        </tr>
+      <% }); %>
+    </table>
+  <% } else { %>
+    <p>No data available.</p>
+  <% } %>
+
+  <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/react-table@7/dist/react-table.min.js"></script>
+</body>
+</html>
